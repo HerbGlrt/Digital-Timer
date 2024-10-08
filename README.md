@@ -35,7 +35,3 @@ The goal of this project is to implement a digital timer that:
 
 ## Requirements
 - EdSim51 simulator.
-- Basic understanding of Assembly programming and microcontroller interfacing.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
