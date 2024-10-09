@@ -72,3 +72,6 @@ O ciclo se repete indefinidamente, permitindo que o cronômetro continue exibind
 # Integrantes
 
 - Vítor Augusto Paiva de Brito - **13732303**
+- André Jacob Suaide - **13864673**
+- Oliver Kenzo Kobayashi
+- Henrique de Oliveira Araújo - **13863950**
