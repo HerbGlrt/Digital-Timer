@@ -1,37 +1,74 @@
-# Digital Timer Using 8051 Microcontroller
+# Cronômetro Digital Usando Microcontrolador 8051
 
-This repository contains the project for the **Microprocessors and Embedded Systems** course (SEL0614/SEL0433), focusing on developing a digital timer using Assembly language on the 8051 microcontroller simulator (EdSim51).
+Este repositório contém o projeto para o curso de **Microprocessadores e Sistemas Embarcados** (***SEL0614/SEL0433***), com foco no desenvolvimento de um cronômetro digital utilizando linguagem Assembly no simulador do microcontrolador **8051** (***EdSim51***).
 
-## Project Overview
+## Visão Geral do Projeto
 
-The goal of this project is to implement a digital timer that:
-- Displays numbers from 0 to 9 on a 7-segment display in a loop.
-- Provides two timing intervals controlled by switches:
-  - **0.25-second intervals** using SW0.
-  - **1-second intervals** using SW1.
-- Allows toggling between timing modes by pressing the switches.
-- Starts counting only when a switch is pressed, keeping the display off otherwise.
+O objetivo deste projeto é implementar um cronômetro digital que:
+- Exibe números de 0 a 9 em um display de 7 segmentos, em loop.
+- Oferece dois intervalos de temporização controlados por interruptores:
+  - **Intervalos de 0,25 segundos** usando o SW0.
+  - **Intervalos de 1 segundo** usando o SW1.
+- Permite alternar entre os modos de temporização ao pressionar os interruptores.
+- Inicia a contagem apenas quando um interruptor é pressionado, mantendo o display desligado até então.
 
-## Features
-- **Assembly Code:** Written in Assembly for the 8051 microcontroller, using the EdSim51 simulator.
-- **Switch Control:** Two switches (SW0 and SW1) are used to control the timer's counting intervals.
-- **Timing Control:** The program changes the display interval between 0.25s and 1s depending on the switch pressed.
-- **Modular Design:** Uses subroutines for delay handling and switch event detection.
-- **I/O Interface:** Interacts with external inputs (buttons) and outputs (LEDs, 7-segment display).
+## Funcionalidades
+- **Código em Assembly:** Escrito em Assembly para o microcontrolador 8051, utilizando o simulador EdSim51.
+- **Controle por Interruptores:** Dois interruptores (SW0 e SW1) são utilizados para controlar os intervalos de contagem do cronômetro.
+- **Controle de Temporização:** O programa altera o intervalo do display entre 0,25s e 1s, dependendo do interruptor pressionado.
+- **Design Modular:** Utiliza sub-rotinas para lidar com o delay e a detecção de eventos dos interruptores.
+- **Interface de I/O:** Interage com entradas externas (botões) e saídas (LEDs, display de 7 segmentos).
 
-## How to Run
-1. Load the Assembly code into the EdSim51 simulator.
-2. Use the available switches to toggle between the different timer intervals.
-3. Observe the 7-segment display for the countdown loop.
+## Explicação do projeto
 
-## Files Included
-- `timer.asm`: The Assembly source code for the 8051 microcontroller.
-- Documentation including:
-  - A schematic diagram of the microcontroller and its connections.
-  - A table explaining how the 7-segment display is controlled using the port registers.
-  
-## Diagram
-- A schematic of the 8051 microcontroller with its I/O interfaces and display connections.
+O cronômetro exibe números de 0 a 9 no display de 7 segmentos, controlando a temporização entre os números com dois botões: SW0 (0,25s) e SW1 (1s). A alternância entre os intervalos ocorre dinamicamente, e o display permanece desligado até o primeiro pressionamento. A lógica do projeto é implementada com sub-rotinas de delay e instruções condicionais para verificar os botões e controlar o tempo de exibição de cada número. O display utiliza a porta P1 do 8051 para exibir os números por meio de combinações de bits.
 
-## Requirements
-- EdSim51 simulator.
+# Explicação do Código
+
+O programa define constantes para facilitar o controle de entradas e saídas, como os interruptores `SWITCH0` e `SWITCH1` e o display de 7 segmentos, utilizando o microcontrolador 8051. No início, o ponteiro de dados `DPTR` é inicializado com o conjunto de algarismos `ALGS`, que contém os números de 0 a 9 a serem exibidos no display. O programa entra em um loop principal que verifica continuamente se um dos interruptores foi pressionado para atualizar o display.
+
+Quando um interruptor é pressionado, a sub-rotina `update` é chamada para limpar o acumulador e carregar o próximo valor a ser exibido no display. O período de exibição é controlado pelas sub-rotinas `sleep_1s` e `sleep_025s`, que determinam se o display deve contar com um intervalo de 1 segundo ou 0,25 segundos, dependendo de qual interruptor foi pressionado. O programa continua alternando entre essas temporizações e atualizando o display até que a contagem atinja 9, momento em que a contagem é reiniciada.
+
+O ciclo se repete indefinidamente, permitindo que o cronômetro continue exibindo números no display. A implementação faz uso eficiente de sub-rotinas de temporização e manipulação de entradas e saídas para garantir que a contagem seja precisa e possa ser alternada entre dois modos de tempo.
+
+# Diagrama esquemático
+
+![Diagrama esquemático](imgs/Diagrama.png)
+
+# Tabela de varredura do display
+
+| Valor decimal correspondente | Valor de endereçamento imediato | Valor hexadecimal | Resultado  |
+|------------------------------|---------------------------------|--------------------|------------|
+| 0                            | `#11000000b`                    | `0xC0`             | ![0](imgs/0.png) |
+| 1                            | `#11111001b`                    | `0xF9`             | ![1](imgs/1.png) |
+| 2                            | `#10100100b`                    | `0xA4`             | ![2](imgs/2.png) |
+| 3                            | `#10110000b`                    | `0xB0`             | ![3](imgs/3.png) |
+| 4                            | `#10011001b`                    | `0x99`             | ![4](imgs/4.png) |
+| 5                            | `#10010010b`                    | `0x92`             | ![5](imgs/5.png) |
+| 6                            | `#10000010b`                    | `0x82`             | ![6](imgs/6.png) |
+| 7                            | `#11111000b`                    | `0xF8`             | ![7](imgs/7.png) |
+| 8                            | `#10000000b`                    | `0x80`             | ![8](imgs/8.png) |
+| 9                            | `#10011000b`                    | `0x90`             | ![9](imgs/9.png) |
+
+
+
+## Como Executar
+1. Carregue o código Assembly no simulador EdSim51.
+2. Use os interruptores disponíveis para alternar entre os diferentes intervalos de tempo do cronômetro.
+3. Observe o display de 7 segmentos para a contagem em loop.
+
+## Arquivos Incluídos
+- `chronometer.asm`: O código fonte Assembly para o microcontrolador 8051.
+- Documentação incluindo:
+  - Um diagrama esquemático do microcontrolador e suas conexões.
+  - Uma tabela explicando como o display de 7 segmentos é controlado usando os registradores de porta.
+
+## Diagrama
+- Um diagrama esquemático do microcontrolador 8051 com suas interfaces de I/O e conexões com o display.
+
+## Requisitos
+- Simulador EdSim51.
+
+# Integrantes
+
+- Vítor Augusto Paiva de Brito - **13732303**
