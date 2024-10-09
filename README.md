@@ -9,6 +9,8 @@
 
 Este repositório contém o projeto para o curso de **Microprocessadores e Sistemas Embarcados** (***SEL0614/SEL0433***), com foco no desenvolvimento de um cronômetro digital utilizando linguagem Assembly no simulador do microcontrolador **8051** (***EdSim51***).
 
+* **Observação** - A Update Freq. utilizada foi 10000.
+
 ## Visão Geral do Projeto
 
 O objetivo deste projeto é implementar um cronômetro digital que:
