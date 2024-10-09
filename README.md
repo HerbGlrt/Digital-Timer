@@ -1,5 +1,12 @@
 # Cronômetro Digital Usando Microcontrolador 8051
 
+# Integrantes
+
+- André Jacob Suaide - **13864673**
+- Henrique de Oliveira Araújo - **13863950**
+- Oliver Kenzo Kobayashi - **13676930**
+- Vítor Augusto Paiva de Brito - **13732303**
+
 Este repositório contém o projeto para o curso de **Microprocessadores e Sistemas Embarcados** (***SEL0614/SEL0433***), com foco no desenvolvimento de um cronômetro digital utilizando linguagem Assembly no simulador do microcontrolador **8051** (***EdSim51***).
 
 ## Visão Geral do Projeto
@@ -68,10 +75,3 @@ O ciclo se repete indefinidamente, permitindo que o cronômetro continue exibind
 
 ## Requisitos
 - Simulador EdSim51.
-
-# Integrantes
-
-- André Jacob Suaide - **13864673**
-- Henrique de Oliveira Araújo - **13863950**
-- Oliver Kenzo Kobayashi - **13676930**
-- Vítor Augusto Paiva de Brito - **13732303**
